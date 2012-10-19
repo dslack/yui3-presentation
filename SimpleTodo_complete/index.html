@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>YUI3 ToDo</title>
+		<script src="http://yui.yahooapis.com/3.7.3/build/yui/yui-min.js"></script>
+		<link rel="stylesheet" type="text/css" href="style.css">
+	</head>
+	<body class="yui3-skin-sam">
+		<div class="container">
+			<input type="text" name="todo" id="todo" placeholder="What to do next?"/>
+
+			<ul id="todoList">
+			</li>
+		</div>
+
+		<script type="text/javascript">
+			//This example will need to retrieve nodes, as well as handling of keys pressed
+			YUI().use("node", "event-key", function(Y) {
+
+				var TODO_HTML = "<li><div><em class='checkbox'></em> <label>{item}</label> <em class='delete'></em></div></li>";
+				var todoEl = Y.one("#todo");
+				var todoList = Y.one("#todoList");
+
+				//When we press enter on the textbox, we will add a new TODO element
+				function addTodo() {
+					//YUI has a basic template substitution.  It also has built-in support for Handlebars
+					var li = Y.Lang.sub(TODO_HTML, {item: todoEl.get("value")});
+					todoList.append(li);
+					todoEl.set("value", "");
+				}
+
+				function removeTodo(e) {
+					var el = e.currentTarget;
+					el.ancestor("li").remove();
+				}
+
+				//Toggling display of checkbox and label of todo entry
+				function toggleCompleteTodo(e) {
+					var el = e.currentTarget;
+					var parent = el.ancestor("li")
+					var label = parent.one("label");
+					var checkbox = parent.one("em.checkbox");
+					label.toggleClass("completed");
+					checkbox.toggleClass("checked");
+				}
+
+				//Once DOM is finished loading, the callback will be executed
+				Y.on('domready', function() {
+					//We are attaching an event to the input thats fired when enter is pressed
+					todoEl.on('key', addTodo, 'enter');
+
+					//Delegation is where we are able to listen for bubbled events - great for dynamic content like ours
+					Y.delegate("click", removeTodo, "div.container", "em.delete")
+					Y.delegate("click", toggleCompleteTodo, "div.container", "em.checkbox, label");
+				});
+			});
+		</script>
+	</body>
+</html>

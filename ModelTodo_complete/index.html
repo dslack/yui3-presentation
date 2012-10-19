@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>YUI3 ToDo</title>
+		<script src="http://yui.yahooapis.com/3.7.3/build/yui/yui-min.js"></script>
+		<script src="todo.js"></script>
+		<link rel="stylesheet" type="text/css" href="style.css">
+	</head>
+	<body class="yui3-skin-sam">
+		<div class="container">
+			<input type="text" name="todo" id="todo" placeholder="What to do next?"/>
+
+			<ul id="todoList">
+			</li>
+		</div>
+
+		<script type="text/javascript">
+			//This example will need to retrieve nodes, as well as handling of keys pressed
+			YUI().use("todo", function(Y) {
+
+				new Y.TodoView({container: Y.one("div.container")}).render();
+			});
+		</script>
+	</body>
+</html>

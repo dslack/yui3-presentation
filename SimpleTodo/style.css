@@ -1,0 +1,50 @@
+div.container {
+	width:800px;
+	margin:50px auto;
+}
+div.container input[type=text] {
+	width:400px;
+	height:30px;
+	font-size:24px;
+}
+div.container ul {
+
+	list-style-type: none;
+	margin:0;
+	margin-top:10px;
+	padding:0;
+}
+div.container ul li div{
+	width:600px;
+}
+ul li div label {
+	margin-left:20px;
+	width:500px;
+	font-size:32px;
+	font-family:sans-serif;
+	display:inline-block;
+}
+
+ul li div label.completed {
+	text-decoration: line-through
+}			
+div.container em.checkbox {
+	display:inline-block;
+	height:16px;
+	width:16px;
+	background: url('checkbox_unchecked.png');
+	font-size:100%;
+	cursor: pointer;
+}
+div.container em.checkbox.checked {
+	background: url('checkbox_checked.png');
+}
+
+div.container em.delete{
+	display:inline-block;
+	height:16px;
+	width:16px;
+	background: url('delete.png');
+	font-size:100%;
+	cursor: pointer;
+}

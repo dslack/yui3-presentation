@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>YUI3 Todo</title>
+		<script src="http://yui.yahooapis.com/3.7.3/build/yui/yui-min.js"></script>
+		<link rel="stylesheet" type="text/css" href="style.css">
+	</head>
+	<body class="yui3-skin-sam">
+		<div class="container">
+			<input type="text" name="todo" id="todo" placeholder="What to do next?"/>
+
+			<ul id="todoList">
+				<!-- What the list would look like -->
+				<li>
+					<div>
+						<em class="checkbox checked"></em>
+						<label class="completed">Pick up Milk</label>
+						<em class="delete"></em>
+					</div>
+				</li>
+				<li>
+					<div>
+						<em class="checkbox"></em>
+						<label>Meet for drinks</label>
+						<em class="delete"></em>
+					</div>
+				</li>				
+			</ul>
+		</div>
+
+		<script type="text/javascript">
+			YUI().use("node", function(Y) {
+			});
+		</script>
+	</body>
+</html>
